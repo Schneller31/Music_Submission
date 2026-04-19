@@ -54,18 +54,16 @@ Follow these steps to get your own version up and running:
 
 ## 🎨 Customization Guide
 
-* **Titles & Headers:** In `index.html`, you can change the main heading and description in lines 42 and 43
-* **Form Labels:** In `index.html` (lines 46–48), update the `placeholder` attributes to change what users see inside the input boxes
-* **Status Messages:** In `index.html`, customize the success message (line 80) and the error message (line 88)
-* **Admin Buttons:** In `admin.html`, you can rename the navigation buttons in lines 50 and 53
-* **Colors:** Search for `background` or Hex codes (like `#ff6b81`) in the `<style>` section of both `index.html` and `admin.html` to match your event's color theme
-* **Fonts:** Change the `font-family` in the CSS to use a different look
-* **Spam Protection:** In `index.html` (line 65), change `let timeLeft = 5;` to a higher value if you want to increase the waiting time between submissions
-* **Input Validation:** In `index.html` (line 48), you can adjust the `min` and `max` values for the grade/class input to match your school's structure
-* **Required Fields:** Add or remove the `required` attribute in the `<input>` tags in `index.html` to decide which information is mandatory
-* **Top List Size:** In `Code.gs`, find the `.slice(0, 10)` part. Change `10` to any number (e.g., `5` or `20`) to display more or fewer songs in your leaderboard
-* **Password:** In `admin.html`, change the `SECRET` variable to your own private password before deploying
-
+* **Titles & Headers:** Change the main title and description in `index.html` (lines 42-43) and the Admin Dashboard title in `admin.html` (line 51)
+* **Form Placeholders:** Update the input field hints in `index.html` (lines 46–48) to change what users see before they start typing
+* **Status & Error Messages:** Customize the submission confirmation and error text in `index.html` (lines 80 and 88)
+* **Navigation Links:** In `admin.html` (lines 54 and 57), replace the placeholder text and URLs for your live website and your Google Sheet
+* **Refresh Button:** Rename or restyle the "Data Refresh" button in `admin.html` (line 60)
+* **Spam Protection:** Adjust the `setTimeout` value in `index.html` (line 82) to change how long the success message stays visible before the button is re-enabled
+* **Colors & Theme:** Edit the CSS variables and Hex codes (like `#ff6b81` or `#1e1e2f`) in the `<style>` block of both HTML files to match your event's branding
+* **Grade/Class Range:** Modify the `min` and `max` attributes in `index.html` (line 48) to fit your school's specific grade levels
+* **Top List Size:** In `code.gs`, change the `.slice(0, 10)` value in the `getAdminData` function to show more or fewer songs in your Top 10
+* **Admin Password:** Set your private login password by changing the `SECRET` variable in `admin.html` (line 74)
 ---
 
 ## 📖 How to use
