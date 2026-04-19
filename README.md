@@ -54,16 +54,19 @@ Follow these steps to get your own version up and running:
 
 ## 🎨 Customization Guide
 
-* **Titles & Headers:** Change the main title and description in `index.html` (lines 42-43) and the Admin Dashboard title in `admin.html` (line 51)
-* **Form Placeholders:** Update the input field hints in `index.html` (lines 46–48) to change what users see before they start typing
+## 🎨 Customization Guide
+
+* **Titles & Headers:** Change the main title and description in `index.html` (lines 42–43) and the Admin Dashboard title in `admin.html` (line 51)
+* **Form Placeholders:** Update the hints inside the input fields in `index.html` (lines 46–48) to change what users see before they start typing
 * **Status & Error Messages:** Customize the submission confirmation and error text in `index.html` (lines 80 and 88)
 * **Navigation Links:** In `admin.html` (lines 54 and 57), replace the placeholder text and URLs for your live website and your Google Sheet
 * **Refresh Button:** Rename or restyle the "Data Refresh" button in `admin.html` (line 60)
 * **Spam Protection:** Adjust the `setTimeout` value in `index.html` (line 82) to change how long the success message stays visible before the button is re-enabled
-* **Colors & Theme:** Edit the CSS variables and Hex codes (like `#ff6b81` or `#1e1e2f`) in the `<style>` block of both HTML files to match your event's branding
+* **Colors & Theme:** Edit the CSS variables and Hex codes in the `<style>` block of both HTML files to match your event's branding
 * **Grade/Class Range:** Modify the `min` and `max` attributes in `index.html` (line 48) to fit your school's specific grade levels
-* **Top List Size:** In `code.gs`, change the `.slice(0, 10)` value in the `getAdminData` function to show more or fewer songs in your Top 10
+* **Top List Size:** In `Code.gs`, find the `.slice(0, 10)` value in the `getAdminData` function to show more or fewer songs in your leaderboard
 * **Admin Password:** Set your private login password by changing the `SECRET` variable in `admin.html` (line 74)
+
 ---
 
 ## 📖 How to use
