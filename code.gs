@@ -51,7 +51,7 @@ function getAdminData() {
   return { top10: top10, entries: allEntries.reverse() };
 }
 
-// Liefert die HTML-Seiten aus
+
 function doGet(e) {
   var page = e.parameter.page || 'index';
   return HtmlService.createHtmlOutputFromFile(page)
@@ -60,7 +60,7 @@ function doGet(e) {
     .addMetaTag('viewport', 'width=device-width, initial-scale=1');
 }
 
-// Speichert neue Songwünsche (POST-Anfrage vom Formular)
+
 function doPost(e) {
   var sheet = SpreadsheetApp.openById("GOOGLE SHEET ID MUST BE ENTERED HERE").getActiveSheet();
   var data = JSON.parse(e.postData.contents);
@@ -76,7 +76,7 @@ function doPost(e) {
     .setMimeType(ContentService.MimeType.TEXT);
 }
 
-// Holt Daten für die Admin-Seite (Top 10 und Liste)
+
 function getAdminData() {
   var sheet = SpreadsheetApp.openById("GOOGLE SHEET ID MUST BE ENTERED HERE").getActiveSheet();
   var rows = sheet.getDataRange().getValues();
@@ -107,7 +107,7 @@ function getAdminData() {
   return { top10: top10, entries: allEntries.reverse() };
 }
 
-// Löschfunktion für den Admin
+
 function deleteEntry(rowNum) {
   var sheet = SpreadsheetApp.openById("GOOGLE SHEET ID MUST BE ENTERED HERE").getActiveSheet();
   sheet.deleteRow(rowNum);
@@ -117,4 +117,19 @@ function deleteEntry(rowNum) {
   var sheet = SpreadsheetApp.openById("GOOGLE SHEET ID MUST BE ENTERED HERE").getActiveSheet();
   sheet.deleteRow(rowNum);
   return "Erfolgreich gelöscht";
+}
+
+function refreshData() {
+    const btn = event.currentTarget;
+    const originalText = btn.innerHTML;
+    
+    // Kleines visuelles Feedback
+    btn.innerHTML = "⌛ Lädt...";
+    btn.disabled = true;
+
+    google.script.run.withSuccessHandler(function(data) {
+        render(data); // Ruft deine bestehende render-Funktion auf
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+    }).getAdminData();
 }

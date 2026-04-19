@@ -65,6 +65,7 @@ Follow these steps to get your own version up and running:
 * **Required Fields:** Add or remove the `required` attribute in the `<input>` tags in `index.html` to decide which information is mandatory
 * **Top List Size:** In `Code.gs`, find the `.slice(0, 10)` part. Change `10` to any number (e.g., `5` or `20`) to display more or fewer songs in your leaderboard
 * **Password:** In `admin.html`, change the `SECRET` variable to your own private password before deploying
+
 ---
 
 ## 📖 How to use
