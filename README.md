@@ -54,8 +54,6 @@ Follow these steps to get your own version up and running:
 
 ## 🎨 Customization Guide
 
-## 🎨 Customization Guide
-
 * **Titles & Headers:** Change the main title and description in `index.html` (lines 42–43) and the Admin Dashboard title in `admin.html` (line 51)
 * **Form Placeholders:** Update the hints inside the input fields in `index.html` (lines 46–48) to change what users see before they start typing
 * **Status & Error Messages:** Customize the submission confirmation and error text in `index.html` (lines 80 and 88)
