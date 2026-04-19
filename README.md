@@ -31,8 +31,8 @@ Follow these steps to get your own version up and running:
    - `Code.gs`: Paste the code from the `Code.gs` file in this repository
    - `index.html`: Paste the code from the `index.html` file
    - `admin.html`: Paste the code from the `admin.html` file
-3. In `Code.gs`, replace `GOOGLE SHEET ID MUST BE ENTERED HERE` with your actual Spreadsheet ID (Line 10, 25, 65, 81, 112, 117)
-4. In `admin.html`, set your desired password in the `PASSWORD` variable (Line 73)
+3. In `Code.gs`, replace `GOOGLE SHEET ID MUST BE ENTERED HERE` with your actual Spreadsheet ID (Line 10, 25, 60)
+4. In `admin.html`, set your desired password in the `PASSWORD` variable (Line 72)
 
 ### 3. Deploy as Web App
 1. Click the **Deploy** button (top right) > **New deployment**

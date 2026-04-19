@@ -7,7 +7,7 @@ function doGet(e) {
 }
 
 function doPost(e) {
-  var sheet = SpreadsheetApp.openById("GOOGLE_SHEET_ID_INSERT_HERE").getActiveSheet();
+  var sheet = SpreadsheetApp.openById("GOOGLE SHEET ID MUST BE ENTERED HERE").getActiveSheet();
   var data = JSON.parse(e.postData.contents);
   
   sheet.appendRow([
@@ -22,7 +22,7 @@ function doPost(e) {
 }
 
 function getAdminData() {
-  var sheet = SpreadsheetApp.openById("GOOGLE_SHEET_ID_INSERT_HERE").getActiveSheet();
+  var sheet = SpreadsheetApp.openById("GOOGLE SHEET ID MUST BE ENTERED HERE").getActiveSheet();
   var rows = sheet.getDataRange().getValues();
   
   if (rows.length <= 1) return { top10: [], entries: [] };
@@ -57,7 +57,7 @@ function getAdminData() {
 }
 
 function deleteEntry(rowNum) {
-  var sheet = SpreadsheetApp.openById("GOOGLE_SHEET_ID_INSERT_HERE").getActiveSheet();
+  var sheet = SpreadsheetApp.openById("GOOGLE SHEET ID MUST BE ENTERED HERE").getActiveSheet();
   sheet.deleteRow(rowNum);
   return "Erfolgreich gelöscht";
 }
