@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: sans-serif; background: #121212; color: white; padding: 20px; text-align: center; }
+        .card { background: #1e1e1e; padding: 20px; border-radius: 12px; margin: 20px auto; max-width: 600px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        
+        /* Navigation Buttons Style */
+        .nav-container { margin-bottom: 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .nav-btn { 
+            padding: 10px 15px; 
+            border-radius: 8px; 
+            border: 1px solid #444; 
+            background: #252525; 
+            color: #ddd; 
+            text-decoration: none; 
+            font-size: 13px; 
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .nav-btn:hover { background: #333; border-color: #ff6b81; color: white; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 12px; border-bottom: 1px solid #333; text-align: left; }
+        th { background: #252525; color: #ff6b81; }
+        button.del { background: #ff4757; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
+        
+        #loginOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #121212; z-index: 1000; display: flex; align-items: center; justify-content: center; }
+        input[type="password"] { padding: 10px; border-radius: 5px; border: none; margin-right: 10px; }
+    </style>
+</head>
+<body>
+
+    <div id="loginOverlay">
+        <div class="card">
+            <h2>Admin Login</h2>
+            <input type="password" id="pwField" placeholder="Passwort">
+            <button onclick="login()" style="padding:10px; background:#ff6b81; border:none; color:white; border-radius:5px; cursor:pointer;">Login</button>
+        </div>
+    </div>
+
+    <h1>Admin Dashboard 🎧</h1>
+
+    <div class="nav-container">
+        <a href="YOUR WEBSITE URL" target="_blank" class="nav-btn">
+            🏠 Zur Wunsch-Seite
+        </a>
+        <a href="YOUR GOOGLE SHEETS URL" target="_blank" class="nav-btn">
+            📊 Google Sheets öffnen
+        </a>
+    </div>
+
+    <div class="card">
+        <h3>🔥 Top 10 meistgewünscht</h3>
+        <div id="top10List" style="text-align: left; line-height: 1.6;">Lade Daten...</div>
+    </div>
+
+    <div class="card">
+        <h3>Alle Wünsche</h3>
+        <table>
+            <thead>
+                <tr><th>Song</th><th>Klasse</th><th>Aktion</th></tr>
+            </thead>
+            <tbody id="allEntries"></tbody>
+        </table>
+    </div>
+
+    <script>
+        const SECRET = "PASSWORD"; //You can change the password however you want.
+
+        function login() {
+            if(document.getElementById("pwField").value === SECRET) {
+                document.getElementById("loginOverlay").style.display = "none";
+                refresh();
+            } else { alert("Falsches Passwort!"); }
+        }
+
+        function refresh() {
+            google.script.run.withSuccessHandler(render).getAdminData();
+        }
+
+        function render(data) {
+            // Top 10
+            let topHtml = "<ul>";
+            if(data.top10.length === 0) topHtml += "<li>Noch keine Daten</li>";
+            data.top10.forEach(item => {
+                topHtml += `<li><strong>${item.count}x</strong> : ${item.name}</li>`;
+            });
+            document.getElementById("top10List").innerHTML = topHtml + "</ul>";
+
+            // Tabelle
+            let tableHtml = "";
+            data.entries.forEach(e => {
+                tableHtml += `<tr>
+                    <td>${e.song}<br><small style="color:#888">${e.artist}</small></td>
+                    <td>${e.grade}</td>
+                    <td><button class="del" onclick="deleteSong(${e.rowNum})">Löschen</button></td>
+                </tr>`;
+            });
+            document.getElementById("allEntries").innerHTML = tableHtml;
+        }
+
+        function deleteSong(row) {
+            if(confirm("Diesen Song wirklich löschen?")) {
+                google.script.run.withSuccessHandler(refresh).deleteEntry(row);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Songwünsche</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e1e2f, #2c2c54);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        input, button {
+            display: block;
+            padding: 12px;
+            margin: 10px auto;
+            border: none;
+            border-radius: 8px;
+            width: 280px;
+            font-size: 14px;
+        }
+        button {
+            background: #ff6b81;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:disabled { background: #777; }
+        .note { margin-top: 30px; font-size: 0.9em; color: #aaa; }
+        #status { margin-top: 15px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>🎵 Songwünsche</h1>
+    <p>Trag hier deine Wunschlieder ein!</p>
+
+    <form id="songForm">
+        <input type="text" name="song" placeholder="Songname" required>
+        <input type="text" name="artist" placeholder="Künstler (optional)">
+        <input type="number" name="grade" min="5" max="13" placeholder="Welche Klasse bist du?" required>
+        <button type="submit" id="submitBtn">Absenden</button>
+    </form>
+
+    <p id="status"></p>
+
+    <div class="note">Deine Vorschläge werden gesammelt und voraussichtlich gespielt!</div>
+
+    <script>
+
+        const scriptURL = "WEB APP URL MUST BE INSERTED HERE" //After deploying, you will receive a URL. This URL must be entered here.
+
+        const form = document.getElementById("songForm");
+        const btn = document.getElementById("submitBtn");
+        const status = document.getElementById("status");
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            btn.disabled = true;
+            status.innerText = "Wird gesendet...";
+
+            const formData = {
+                song: form.song.value,
+                artist: form.artist.value,
+                grade: form.grade.value
+            };
+
+            fetch(scriptURL, {
+                method: "POST",
+                body: JSON.stringify(formData)
+            })
+            .then(() => {
+                status.innerText = "✅ Dein Vorschlag wurde eingereicht!";
+                form.reset();
+                setTimeout(() => { 
+                    status.innerText = ""; 
+                    btn.disabled = false;
+                }, 5000);
+            })
+            .catch(() => {
+                status.innerText = "❌ Fehler! Versuche es nochmal.";
+                btn.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
