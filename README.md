@@ -19,10 +19,10 @@ Follow these steps to get your own version up and running:
 
 ### 1. Prepare the Spreadsheet
 1. Create a new [Google Sheet](https://sheets.new)
-2. Name the first sheet (tab) `Sheet1`
-3. Create the following headers in the first row:
-   - `A1: Timestamp` | `B1: Song` | `C1: Artist` | `D1: Class/Grade`
-4. Copy the **ID** of your spreadsheet from the URL:
+2. Name the Sheet as you want
+(2.1 Create the following headers in the first row:
+   - `A1: Timestamp` | `B1: Song` | `C1: Artist` | `D1: Class/Grade`)
+3. Copy the **ID** of your spreadsheet from the URL:
    `https://docs.google.com/spreadsheets/d/YOUR_SPREADSHEET_ID/edit`
 
 ### 2. Set up the Script
@@ -37,13 +37,12 @@ Follow these steps to get your own version up and running:
 ### 3. Deploy as Web App
 1. Click the **Deploy** button (top right) > **New deployment**
 2. Select type: **Web app**
-3. Description: `SheetRequests v1`
-4. Execute as: **Me**
-5. Who has access: **Anyone** (this allows people without a Google account to access this website)
-6. Click **Deploy** and authorize the permissions.
-7. **IMPORTANT:** Copy the "Web App URL" provided.
+3. Execute as: **Me**
+4. Who has access: **Anyone** (this allows people without a Google account to access this website)
+5. Click **Deploy** and authorize the permissions.
+6. **IMPORTANT:** Copy the "Web App URL" provided.
 
-### 4. Connect Frontend to Backend
+### 4. Connect Google Sheets with Scripts
 1. Open your `index.html` in the Apps Script editor
 2. Find the line `const scriptURL = "WEB APP URL MUST BE INSERTED HERE";` (Line 58)
 3. Paste your Web App URL between the quotes
